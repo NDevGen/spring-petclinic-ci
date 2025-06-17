@@ -33,7 +33,15 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                sh 'docker build -t spring-petclinic .'
+                script {
+                    dockerImage = docker.build("spring-petclinic:latest")
+                }
+            }
+        }
+
+        stage('Run Container') {
+            steps {
+                sh 'docker run -d -p 8080:8080 --name petclinic spring-petclinic:latest'
             }
         }
     }
