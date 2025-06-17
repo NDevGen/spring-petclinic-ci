@@ -9,8 +9,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/NdevGen/spring-petclinic-ci.git'
-            }
+        git branch: 'main', url: 'https://github.com/NdevGen/spring-petclinic-ci.git'
+    }
         }
 
         stage('Build') {
